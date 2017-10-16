@@ -8,3 +8,6 @@ Janos, Marcel, Niklas und Benedict
 ## Sprache
 Die Kommentare und die Unterhaltung werden in Deutsch geführt.
 
+## Lizenz
+Wir verwenden in diesem Projekt die MIT-Lizenz.
+
