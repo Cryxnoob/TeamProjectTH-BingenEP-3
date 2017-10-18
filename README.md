@@ -11,3 +11,5 @@ Die Kommentare und die Unterhaltung werden in Deutsch geführt.
 ## Lizenz
 Wir verwenden in diesem Projekt die MIT-Lizenz.
 
+## Code of Conduct
+Wir haben den Contributor Covenant Code of Conduct gewählt.
