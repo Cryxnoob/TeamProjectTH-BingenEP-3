@@ -1,8 +1,8 @@
-package Project2
+package project2
 
 import org.junit.Test
 
-class MainTest {
+class TestHelloWorld {
     @Test
     fun helloWorldTest() {
         println("Test Test, Hello!")
