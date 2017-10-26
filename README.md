@@ -15,8 +15,8 @@ Wir verwenden in diesem Projekt die MIT-Lizenz.
 Wir haben den Contributor Covenant Code of Conduct gewählt.
 
 ## Anwendung Hello World 
-Nachdem der Download der JAR unter Releases vollendet ist,,muss Powershell geöffnet werden 
-und in Powershel in den Ordner TeamProjectTH-BingenEP-3 navigiert werden.
-Dort muss folgender Befehl eingegebn werden.
+Nachdem der Download der JAR unter Releases vollendet ist, muss Powershell geöffnet werden 
+und dort in den Ordner TeamProjectTH-BingenEP-3 navigiert werden.
+Jetzt muss folgender Befehl eingegeben werden.
  
 **java -jar target/TeamProjectTH-BingenEP-3-1.0-SNAPSHOT-jar-with-dependencies.jar**
