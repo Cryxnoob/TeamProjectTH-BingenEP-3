@@ -15,7 +15,7 @@ Wir verwenden in diesem Projekt die MIT-Lizenz.
 Wir haben den Contributor Covenant Code of Conduct gewählt.
 
 ## Anwendung Hello World 
-Nachdem der download des Repositories vollendet ist, muss Powershell geöffnet werden 
+Nachdem der Download der JAR unter Releases vollendet ist,,muss Powershell geöffnet werden 
 und in Powershel in den Ordner TeamProjectTH-BingenEP-3 navigiert werden.
 Dort muss folgender Befehl eingegebn werden.
  
