@@ -1,4 +1,4 @@
-package de.thbingen.info2.model
+package de.thbingen.info2.classes
 
 class Segment (val track:Int, var traincounter:Int, var delayed: Boolean){
  fun increaseCounter (){
