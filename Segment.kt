@@ -1,4 +1,4 @@
-package Project2
+package project2
 
 class Segment(id:Int) {
     private var currentcount:Int = 0
