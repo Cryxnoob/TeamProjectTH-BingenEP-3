@@ -1,22 +1,57 @@
 package project2
 
-import java.util.*
+class Network(c:Int,trains:List<Train>, segmentcount:Int) {
+    private var capacity:Int=c
+    private var trains:List<Train> =trains
+    private var segments:MutableList<Segment> = mutableListOf()
+    private var segmentcount = segmentcount
 
-class Train(schedule:MutableList<Int>) {
+    public fun createSegments(){
 
-    private var delayed:Boolean = false
-    private var schedule:List<Int> = schedule
+        var x:Int = 0
+        while(x<segmentcount){
 
-    public fun setDelayed(d: Boolean){
-        delayed= d
+            segments.add(Segment(x+1))
+            x++
+        }
+
+
     }
 
-    public fun getDelayed():Boolean{
-        return delayed
-    }
-    public fun getcurrentSegment():Int{
+    fun simulateoneStep(){
+        /*
+        reset segment Train count
+        */
+        for (segment in segments) {
+
+            segment.setcurrentcount(0)
+        }
+        for (train in trains){
+            train.setDelayed(false)
+        }
+        for (train in trains){
+
+            var segment:Int = train.getcurrentSegment()-1
+            if (segment>-1){
+                segments[segment].increasecount()
+            }
+        }
+
+        for (segment in segments){
+            if (segment.getcurrentcount()>=capacity){
 
 
-        return schedule[0]
+                for (train in trains){
+                    if (train.getcurrentSegment()==segment.getid() ){
+                        train.setDelayed(true)
+                    }
+
+                }
+            }
+
+        }
+
+
+
     }
 }
