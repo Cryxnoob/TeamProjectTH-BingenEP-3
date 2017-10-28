@@ -1,6 +1,5 @@
 package project2
 
-package project2
 
 import java.util.*
 
