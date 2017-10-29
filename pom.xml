@@ -7,7 +7,7 @@
 
     <groupId>de.thbingen.info2</groupId>
     <artifactId>TeamProjectTH-BingenEP-3</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <properties>
         <kotlin.version>1.1.51</kotlin.version>
