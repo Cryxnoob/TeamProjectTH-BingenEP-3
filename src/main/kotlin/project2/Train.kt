@@ -14,9 +14,13 @@ class Train(schedule:MutableList<Int>) {
     public fun getDelayed():Boolean{
         return delayed
     }
-    public fun getcurrentSegment():Int{
+    public fun getcurrentSegment(stepnumber:Int):Int{
 
 
-        return schedule[0]
+        return schedule[stepnumber]
+    }
+    fun getschedulelenght():Int{
+
+        return schedule.size
     }
 }
