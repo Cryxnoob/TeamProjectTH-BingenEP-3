@@ -5,3 +5,6 @@ out/*
 *.iml
 
 target/*
+
+results.csv
+

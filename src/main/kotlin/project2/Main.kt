@@ -1,8 +1,8 @@
 package project2
 
+import com.univocity.parsers.common.record.Record
 import com.univocity.parsers.csv.CsvParser
 import com.univocity.parsers.csv.CsvParserSettings
-import com.univocity.parsers.common.record.Record
 import com.univocity.parsers.csv.CsvWriter
 import com.univocity.parsers.csv.CsvWriterSettings
 
@@ -29,7 +29,6 @@ fun scneario (){
     var trains = mutableListOf(train1, train2, train3, train4, train5, train6, train7, train8, train9, train10, train11, train12)
 
     var network = Network(3, trains, 5, 5)
-    network.createSegments()
     network.simulateoneStep()
     writeresultstoconsole(trains)
 }
@@ -38,7 +37,6 @@ fun scneario (){
 fun external (){
     var trains:MutableList<Train> = parseCSV()
     var network = Network(3, trains, 5,trains[0].getschedulelenght())
-    network.createSegments()
     network.simulateoneStep()
     saveResultsToCSV(trains)
 
@@ -118,3 +116,4 @@ fun writeresultstoconsole(results: List<Train>) {
     }
 
 }
+
