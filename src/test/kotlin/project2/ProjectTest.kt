@@ -39,8 +39,8 @@ class ProjectTest {
         assertTrue(trainsCSV.size > 0)
     }
     @Test
-    fun getSegmentIdTest() {
-        var segment:Segment = Segment(42)
+    fun getSegmentCapacityTest() {
+        var segment:Segment = Segment(42, 0)
         assertEquals(42, segment.id)
     }
     @Test
