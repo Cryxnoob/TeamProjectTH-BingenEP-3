@@ -1,20 +1,12 @@
 package project2
 
-class Network(c:Int,trains:List<Train>, segmentcount:Int) {
-    private var capacity:Int=c
-    private var trains:List<Train> =trains
+class Network(val capacity:Int,val trains:List<Train>, val segmentcount:Int,val schedulelength:Int) {
     private var segments:MutableList<Segment> = mutableListOf()
-    private var segmentcount = segmentcount
-
-    public fun createSegments(){
-
-        var x:Int = 0
-        while(x<segmentcount){
-
+    private var currentstep:Int = 0
+    init {
+        for (x in 0..segmentcount) {
             segments.add(Segment(x+1))
-            x++
         }
-
 
     }
 
@@ -31,7 +23,7 @@ class Network(c:Int,trains:List<Train>, segmentcount:Int) {
         }
         for (train in trains){
 
-            var segment:Int = train.getcurrentSegment()-1
+            var segment:Int = train.getcurrentSegment(currentstep)-1
             if (segment>-1){
                 segments[segment].increasecount()
             }
@@ -42,7 +34,7 @@ class Network(c:Int,trains:List<Train>, segmentcount:Int) {
 
 
                 for (train in trains){
-                    if (train.getcurrentSegment()==segment.getid() ){
+                    if (train.getcurrentSegment(currentstep)==segment.id) {
                         train.setDelayed(true)
                     }
 
@@ -50,7 +42,7 @@ class Network(c:Int,trains:List<Train>, segmentcount:Int) {
             }
 
         }
-
+        currentstep++
 
 
     }
