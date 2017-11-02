@@ -18,7 +18,7 @@ class Train(val schedule:MutableList<Int>) {
 
         return schedule[stepNumber]
     }
-    fun getScheduleLenght():Int{
+    fun getScheduleLength():Int{
 
         return schedule.size
     }

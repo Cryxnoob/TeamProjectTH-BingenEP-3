@@ -37,7 +37,7 @@ fun scneario() {
 fun external() {
     var trains: MutableList<Train> = parseScheduleCSV()
     var segments: MutableList<Int> = parseSegmentsCSV()
-    var network = Network(3, trains, trains[0].getScheduleLenght(), segments)
+    var network = Network(3, trains, trains[0].getScheduleLength(), segments)
     network.simulateOneStep()
     saveResultsToCSV(trains, network = network)
 
@@ -102,10 +102,23 @@ fun saveResultsToCSV(results: List<Train>, outputFile: String = "results.csv", n
 
 
     // Write the record headers of this file
-    val trainrows: MutableList<Array<Any>> = mutableListOf()
+    val trainRows: MutableList<Array<Any>> = mutableListOf()
     var i: Int = 0
     var row: Array<Any> = arrayOf("train number", "delayed/on time")
-    trainrows.add(row)
+    trainRows.add(row)
+
+    for (result in results) {
+
+        i++
+
+        if (result.getDelayed()) {
+            row = arrayOf(i.toString(), "delayed")
+        } else {
+            row = arrayOf(i.toString(), "ontime")
+        }
+        trainRows.add(row)
+    }
+    csvWriter.writeRowsAndClose(trainRows)
 
     // segment capacities:
     val segmentWriter = FileHandler().getWriter("segmentcapacities.csv")
@@ -129,36 +142,11 @@ fun saveResultsToCSV(results: List<Train>, outputFile: String = "results.csv", n
         j++
     }
     segmentCsvWriter.writeRowsAndClose(segmentRows)
-
-    for (result in results) {
-
-        i++
-
-        if (result.getDelayed()) {
-            row = arrayOf(i.toString(), "delayed")
-        } else {
-            row = arrayOf(i.toString(), "ontime")
-        }
-        trainrows.add(row)
-    }
-
-    csvWriter.writeRowsAndClose(trainrows)
 }
 
 fun writeResultstoConsole(results: List<Train>, network: Network) {
 
     var i: Int = 0
-    var segmentCapacities = network.getSegmentsCapacityTracking()
-    var x: Int = 1
-
-    for(capacities in segmentCapacities) {
-        var resultString = "Segment #" + x.toString() + " remaining capacities: "
-        for (capacity in capacities) {
-            resultString = resultString + capacity.toString() + " - "
-        }
-        println(resultString)
-        x++
-    }
 
     for (result in results) {
 
@@ -170,6 +158,17 @@ fun writeResultstoConsole(results: List<Train>, network: Network) {
             println(i.toString() + " - ontime")
         }
 
+    }
+    var segmentCapacities = network.getSegmentsCapacityTracking()
+    var x: Int = 1
+
+    for(capacities in segmentCapacities) {
+        var resultString = "Segment #" + x.toString() + " remaining capacities: "
+        for (capacity in capacities) {
+            resultString = resultString + capacity.toString() + " - "
+        }
+        println(resultString)
+        x++
     }
 
 }

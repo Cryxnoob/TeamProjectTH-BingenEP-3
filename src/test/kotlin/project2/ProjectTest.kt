@@ -23,17 +23,17 @@ class ProjectTest {
         for (record in allRows){
 
 
-            var segmentschoiceStr : String = record.values[1]
-            var segmentschoiceArray: List<String> = segmentschoiceStr.split(";")
+            var segmentsChoiceStr : String = record.values[1]
+            var segmentsChoiceArray: List<String> = segmentsChoiceStr.split(";")
 
-            var segmentschoiceList: MutableList<Int> = mutableListOf()
+            var segmentsChoiceList: MutableList<Int> = mutableListOf()
 
-            for (segment in segmentschoiceArray) {
+            for (segment in segmentsChoiceArray) {
                 val segmentInt: Int = segment.toInt()
-                segmentschoiceList.add(segmentInt)
+                segmentsChoiceList.add(segmentInt)
             }
 
-            trainsCSV.add(Train(schedule = segmentschoiceList))
+            trainsCSV.add(Train(schedule = segmentsChoiceList))
 
         }
         assertTrue(trainsCSV.size > 0)

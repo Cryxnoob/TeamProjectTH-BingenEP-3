@@ -16,13 +16,6 @@ class Network(val capacity:Int,val trains:List<Train>, val scheduleLength:Int, v
 
 
     }
-    fun getSegmentsCapacityTracking(): MutableList<MutableList<Int>> {
-        var masterList: MutableList<MutableList<Int>> = mutableListOf()
-        for(segment in segments) {
-            masterList.add(segment.getPersistentCapacities())
-        }
-        return masterList
-    }
 
     fun simulateOneStep(){
 
@@ -54,10 +47,10 @@ class Network(val capacity:Int,val trains:List<Train>, val scheduleLength:Int, v
                 diff = segment.getCurrentCount()-segment.capacity
                 x = diff
                 while (x > 0 ){
-                    var differentTrain:Boolean = false
-                    while (!differentTrain){
+                    var differentTrain: Boolean = false
+                    while (!differentTrain) {
                         val newValue = Random().nextInt(segment.getCurrentCount())
-                        if(newValue !in delayedTrains){
+                        if(newValue !in delayedTrains) {
                             delayedTrains.add(newValue)
                             differentTrain = true
                         }
@@ -72,6 +65,7 @@ class Network(val capacity:Int,val trains:List<Train>, val scheduleLength:Int, v
                         for (delayedTrain in delayedTrains){
                             if (delayedTrain == y){
                                 train.setDelayed(true)
+
                             }
                         }
 
@@ -80,10 +74,17 @@ class Network(val capacity:Int,val trains:List<Train>, val scheduleLength:Int, v
 
                 }
             }
-
+            segment.persistCapacity()
         }
         currentStep++
 
 
+    }
+    fun getSegmentsCapacityTracking(): MutableList<MutableList<Int>> {
+        var masterList: MutableList<MutableList<Int>> = mutableListOf()
+        for(segment in segments) {
+            masterList.add(segment.getPersistentCapacities())
+        }
+        return masterList
     }
 }

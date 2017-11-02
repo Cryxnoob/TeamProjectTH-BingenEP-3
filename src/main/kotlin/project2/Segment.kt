@@ -19,15 +19,16 @@ class Segment(val id:Int,val capacity:Int) {
         currentCount++
     }
 
-    public fun persistCapacity(){
-        if(currentCount >= capacity){
+    public fun persistCapacity() {
+        if(currentCount >= capacity) {
             scheduleCapacities.add(0)
         }
         else {
             scheduleCapacities.add((capacity - currentCount))
         }
     }
-    public fun getPersistentCapacities():MutableList<Int> {
+
+    public fun getPersistentCapacities(): MutableList<Int> {
         return scheduleCapacities
     }
 }
