@@ -2,9 +2,9 @@ package project2
 
 import java.util.*
 
-class Network(val capacity:Int,val trains:List<Train>, val schedulelength:Int, val capacities: MutableList<Int>) {
+class Network(val capacity:Int,val trains:List<Train>, val scheduleLength:Int, val capacities: MutableList<Int>) {
     private var segments:MutableList<Segment> = mutableListOf()
-    private var currentstep:Int = 0
+    private var currentStep:Int = 0
 
     init{
 
@@ -17,46 +17,55 @@ class Network(val capacity:Int,val trains:List<Train>, val schedulelength:Int, v
 
     }
 
-    fun simulateoneStep(){
+    fun simulateOneStep(){
 
         var diff:Int
         var x:Int
         var y:Int
-        var delayedtrains:MutableList<Int> = mutableListOf()
+        var delayedTrains:MutableList<Int> = mutableListOf()
         /*
         reset segment Train count
         */
         for (segment in segments) {
 
-            segment.setcurrentcount(0)
+            segment.setCurrentCount(0)
         }
         for (train in trains){
             train.setDelayed(false)
         }
         for (train in trains){
 
-            var segment:Int = train.getcurrentSegment(currentstep)-1
+            var segment:Int = train.getCurrentSegment(currentStep)-1
             if (segment>-1){
-                segments[segment].increasecount()
+                segments[segment].increaseCount()
             }
         }
 
         for (segment in segments){
-            if (segment.getcurrentcount()>segment.capacity){
+            if (segment.getCurrentCount()>segment.capacity){
 
-                diff = segment.getcurrentcount()-segment.capacity
+                diff = segment.getCurrentCount()-segment.capacity
                 x = diff
                 while (x > 0 ){
-                    delayedtrains.add(Random().nextInt(segment.getcurrentcount()))
+                    var differentTrain: Boolean = false
+                    while (!differentTrain) {
+                        val newValue = Random().nextInt(segment.getCurrentCount())
+                        if(newValue !in delayedTrains) {
+                            delayedTrains.add(newValue)
+                            differentTrain = true
+                        }
+                    }
                     x--
+
                 }
                 y = 0
 
                 for (train in trains){
-                    if (train.getcurrentSegment(currentstep)==segment.id){
-                        for (delayedtrain in delayedtrains){
-                            if (delayedtrain == y){
+                    if (train.getCurrentSegment(currentStep)==segment.id){
+                        for (delayedTrain in delayedTrains){
+                            if (delayedTrain == y){
                                 train.setDelayed(true)
+
                             }
                         }
 
@@ -65,10 +74,17 @@ class Network(val capacity:Int,val trains:List<Train>, val schedulelength:Int, v
 
                 }
             }
-
+            segment.persistCapacity()
         }
-        currentstep++
+        currentStep++
 
 
+    }
+    fun getSegmentsCapacityTracking(): MutableList<MutableList<Int>> {
+        var masterList: MutableList<MutableList<Int>> = mutableListOf()
+        for(segment in segments) {
+            masterList.add(segment.getPersistentCapacities())
+        }
+        return masterList
     }
 }

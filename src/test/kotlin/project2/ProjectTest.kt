@@ -23,17 +23,17 @@ class ProjectTest {
         for (record in allRows){
 
 
-            var segmentschoiceStr : String = record.values[1]
-            var segmentschoiceArray: List<String> = segmentschoiceStr.split(";")
+            var segmentsChoiceStr : String = record.values[1]
+            var segmentsChoiceArray: List<String> = segmentsChoiceStr.split(";")
 
-            var segmentschoiceList: MutableList<Int> = mutableListOf()
+            var segmentsChoiceList: MutableList<Int> = mutableListOf()
 
-            for (segment in segmentschoiceArray) {
+            for (segment in segmentsChoiceArray) {
                 val segmentInt: Int = segment.toInt()
-                segmentschoiceList.add(segmentInt)
+                segmentsChoiceList.add(segmentInt)
             }
 
-            trainsCSV.add(Train(schedule = segmentschoiceList))
+            trainsCSV.add(Train(schedule = segmentsChoiceList))
 
         }
         assertTrue(trainsCSV.size > 0)
@@ -47,9 +47,9 @@ class ProjectTest {
     fun checkInitialTrainTest(){
         var train:Train = Train(mutableListOf(1, 2, 3))
         assertFalse(train.getDelayed())
-        assertEquals(1, train.getcurrentSegment(0))
-        assertEquals(2, train.getcurrentSegment(1))
-        assertEquals(3, train.getcurrentSegment(2))
+        assertEquals(1, train.getCurrentSegment(0))
+        assertEquals(2, train.getCurrentSegment(1))
+        assertEquals(3, train.getCurrentSegment(2))
     }
 }
 
