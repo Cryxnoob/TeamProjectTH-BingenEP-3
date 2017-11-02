@@ -29,7 +29,7 @@ fun scneario() {
     var trains = mutableListOf(train1, train2, train3, train4, train5, train6, train7, train8, train9, train10, train11, train12)
 
     var network = Network(3, trains, 5,mutableListOf(2, 3, 3, 3, 3))
-    network.simulateoneStep()
+    network.simulateOneStep()
     writeResultstoConsole(trains, network)
 }
 
@@ -37,9 +37,9 @@ fun scneario() {
 fun external() {
     var trains: MutableList<Train> = parseScheduleCSV()
     var segments: MutableList<Int> = parseSegmentsCSV()
-    var network = Network(3, trains, trains[0].getschedulelenght(), segments)
-    network.simulateoneStep()
-    saveResultsToCSV(trains)
+    var network = Network(3, trains, trains[0].getScheduleLenght(), segments)
+    network.simulateOneStep()
+    saveResultsToCSV(trains, network = network)
 
 }
 
@@ -96,9 +96,8 @@ fun parseSegmentsCSV(): MutableList<Int> {
     return segmentsCSV
 }
 
-fun saveResultsToCSV(results: List<Train>, outputFile: String = "results.csv") {
+fun saveResultsToCSV(results: List<Train>, outputFile: String = "results.csv", network: Network) {
     val writer = FileHandler().getWriter(outputFile)
-
     val csvWriter = CsvWriter(writer, CsvWriterSettings())
 
 
@@ -107,6 +106,30 @@ fun saveResultsToCSV(results: List<Train>, outputFile: String = "results.csv") {
     var i: Int = 0
     var row: Array<Any> = arrayOf("train number", "delayed/on time")
     trainrows.add(row)
+
+    // segment capacities:
+    val segmentWriter = FileHandler().getWriter("segmentcapacities.csv")
+
+    val segmentCsvWriter = CsvWriter(segmentWriter, CsvWriterSettings())
+
+    var segmentCapacities = network.getSegmentsCapacityTracking()
+
+    // Write the record headers of this file
+    val segmentRows: MutableList<Array<Any>> = mutableListOf()
+    var segmentRow: Array<Any> = arrayOf("Segment number", "capacities remaining")
+    segmentRows.add(segmentRow)
+    var j: Int = 1
+    for(capacities in segmentCapacities) {
+        var resultString = ""
+        for (capacity in capacities) {
+            resultString = resultString + capacity.toString() + ";"
+        }
+        segmentRow = arrayOf("Segment #" + j, resultString)
+        segmentRows.add(segmentRow)
+        j++
+    }
+    segmentCsvWriter.writeRowsAndClose(segmentRows)
+
     for (result in results) {
 
         i++
