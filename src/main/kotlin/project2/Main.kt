@@ -30,20 +30,20 @@ fun scneario() {
 
     var network = Network(3, trains, 5,mutableListOf(2, 3, 3, 3, 3))
     network.simulateoneStep()
-    writeresultstoconsole(trains)
+    writeResultstoConsole(trains, network)
 }
 
 
 fun external() {
-    var trains: MutableList<Train> = parsescheduleCSV()
-    var segments: MutableList<Int> = parsesegmentsCSV()
+    var trains: MutableList<Train> = parseScheduleCSV()
+    var segments: MutableList<Int> = parseSegmentsCSV()
     var network = Network(3, trains, trains[0].getschedulelenght(), segments)
     network.simulateoneStep()
     saveResultsToCSV(trains)
 
 }
 
-fun parsescheduleCSV(): MutableList<Train> {
+fun parseScheduleCSV(): MutableList<Train> {
     var trainsCSV: MutableList<Train> = mutableListOf()
     var settings = CsvParserSettings()
     settings.format.setLineSeparator("\n")
@@ -57,23 +57,23 @@ fun parsescheduleCSV(): MutableList<Train> {
     for (record in allRows) {
 
 
-        var segmentschoiceStr: String = record.values[1]
-        var segmentschoiceArray: List<String> = segmentschoiceStr.split(";")
+        var segmentsChoiceStr: String = record.values[1]
+        var segmentsChoiceArray: List<String> = segmentsChoiceStr.split(";")
 
-        var segmentschoiceList: MutableList<Int> = mutableListOf()
+        var segmentsChoiceList: MutableList<Int> = mutableListOf()
 
-        for (segment in segmentschoiceArray) {
+        for (segment in segmentsChoiceArray) {
             val segmentInt: Int = segment.toInt()
-            segmentschoiceList.add(segmentInt)
+            segmentsChoiceList.add(segmentInt)
         }
 
-        trainsCSV.add(Train(schedule = segmentschoiceList))
+        trainsCSV.add(Train(schedule = segmentsChoiceList))
 
     }
     return trainsCSV
 }
 
-fun parsesegmentsCSV(): MutableList<Int> {
+fun parseSegmentsCSV(): MutableList<Int> {
     var segmentsCSV: MutableList<Int> = mutableListOf()
     var settings = CsvParserSettings()
     settings.format.setLineSeparator("\n")
@@ -87,10 +87,10 @@ fun parsesegmentsCSV(): MutableList<Int> {
     for (record in allRows) {
 
 
-        var segmentcapacity: String = record.values[1]
+        var segmentCapacity: String = record.values[1]
 
 
-        segmentsCSV.add(segmentcapacity.toInt())
+        segmentsCSV.add(segmentCapacity.toInt())
 
     }
     return segmentsCSV
@@ -122,9 +122,21 @@ fun saveResultsToCSV(results: List<Train>, outputFile: String = "results.csv") {
     csvWriter.writeRowsAndClose(trainrows)
 }
 
-fun writeresultstoconsole(results: List<Train>) {
+fun writeResultstoConsole(results: List<Train>, network: Network) {
 
     var i: Int = 0
+    var segmentCapacities = network.getSegmentsCapacityTracking()
+    var x: Int = 1
+
+    for(capacities in segmentCapacities) {
+        var resultString = "Segment #" + x.toString() + " remaining capacities: "
+        for (capacity in capacities) {
+            resultString = resultString + capacity.toString() + " - "
+        }
+        println(resultString)
+        x++
+    }
+
     for (result in results) {
 
         i++

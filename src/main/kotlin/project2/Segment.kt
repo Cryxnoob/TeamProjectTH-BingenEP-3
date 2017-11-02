@@ -1,20 +1,33 @@
 package project2
 
 class Segment(val id:Int,val capacity:Int) {
-    private var currentcount:Int = 0
+    private var currentCount:Int = 0
+    private var scheduleCapacities:MutableList<Int> = mutableListOf()
 
 
-    public fun setcurrentcount(c: Int) {
+    public fun setCurrentCount(c: Int) {
 
-        currentcount = c
+        currentCount = c
     }
 
-    public fun getcurrentcount():Int{
-        return currentcount
+    public fun getCurrentCount():Int{
+        return currentCount
     }
 
-    fun increasecount(){
+    fun increaseCount(){
 
-        currentcount++
+        currentCount++
+    }
+
+    public fun persistCapacity(){
+        if(currentCount >= capacity){
+            scheduleCapacities.add(0)
+        }
+        else {
+            scheduleCapacities.add((capacity - currentCount))
+        }
+    }
+    public fun getPersistentCapacities():MutableList<Int> {
+        return scheduleCapacities
     }
 }

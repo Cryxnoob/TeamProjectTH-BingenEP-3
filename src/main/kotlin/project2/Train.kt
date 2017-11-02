@@ -13,12 +13,12 @@ class Train(val schedule:MutableList<Int>) {
     public fun getDelayed():Boolean{
         return delayed
     }
-    public fun getcurrentSegment(stepnumber:Int):Int{
+    public fun getCurrentSegment(stepNumber:Int):Int{
 
 
-        return schedule[stepnumber]
+        return schedule[stepNumber]
     }
-    fun getschedulelenght():Int{
+    fun getScheduleLenght():Int{
 
         return schedule.size
     }
