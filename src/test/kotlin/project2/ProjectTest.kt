@@ -20,20 +20,22 @@ class ProjectTest {
         var allRows: MutableList<Record> = csvParser.parseAllRecords(reader)
 
 
-        for (record in allRows){
+        for (record in allRows) {
 
+            val segmentChoiceStr: String = record.values[1]
+            val segmentChoiceArray: List<String> = segmentChoiceStr.split(";")
 
-            var segmentsChoiceStr : String = record.values[1]
-            var segmentsChoiceArray: List<String> = segmentsChoiceStr.split(";")
+            val priority: Int = record.values[2].toInt()
+            val id: Int = record.values[0].toInt()
 
-            var segmentsChoiceList: MutableList<Int> = mutableListOf()
+            val segmentChoiceList: MutableList<Int> = mutableListOf()
 
-            for (segment in segmentsChoiceArray) {
+            for (segment in segmentChoiceArray) {
                 val segmentInt: Int = segment.toInt()
-                segmentsChoiceList.add(segmentInt)
+                segmentChoiceList.add(segmentInt)
             }
 
-            trainsCSV.add(Train(schedule = segmentsChoiceList))
+            trainsCSV.add(Train(schedule = segmentChoiceList, priority = priority, id = id))
 
         }
         assertTrue(trainsCSV.size > 0)
@@ -45,11 +47,13 @@ class ProjectTest {
     }
     @Test
     fun checkInitialTrainTest(){
-        var train:Train = Train(mutableListOf(1, 2, 3))
+        var train:Train = Train(mutableListOf(1, 2, 3),1,42)
         assertFalse(train.getDelayed())
         assertEquals(1, train.getCurrentSegment(0))
         assertEquals(2, train.getCurrentSegment(1))
         assertEquals(3, train.getCurrentSegment(2))
     }
 }
+
+
 
