@@ -14,23 +14,26 @@ fun main(args: Array<String>) {
 }
 
 fun scneario() {
-    var train1 = Train(schedule = mutableListOf(5, 2, 3, 0, 1))
-    var train2 = Train(schedule = mutableListOf(4, 0, 0, 3, 4))
-    var train3 = Train(schedule = mutableListOf(1, 2, 3, 4, 5))
-    var train4 = Train(schedule = mutableListOf(5, 4, 3, 2, 1))
-    var train5 = Train(schedule = mutableListOf(0, 0, 5, 5, 2))
-    var train6 = Train(schedule = mutableListOf(3, 4, 5, 1, 2))
-    var train7 = Train(schedule = mutableListOf(2, 1, 1, 1, 3))
-    var train8 = Train(schedule = mutableListOf(1, 1, 0, 0, 0))
-    var train9 = Train(schedule = mutableListOf(4, 3, 2, 5, 5))
-    var train10 = Train(schedule = mutableListOf(1, 5, 4, 4, 4))
-    var train11 = Train(schedule = mutableListOf(2, 0, 4, 3, 3))
-    var train12 = Train(schedule = mutableListOf(3, 0, 0, 0, 0))
+    var train1 = Train(schedule = mutableListOf(5, 2, 3, 0, 1, 5, 2, 3, 0, 1, 5, 2, 3, 0, 1, 5, 2, 3, 0, 1, 5, 2, 3, 0, 1, 5, 2, 3, 0, 1, 5, 2, 3, 0, 1, 5, 2, 3, 0, 1, 5, 2, 3, 0, 1, 5, 2, 3, 0, 1, 5, 2, 3, 0, 1, 5, 2, 3, 0, 1, 5, 2, 3, 0), priority = 1, id = 100)
+    var train2 = Train(schedule = mutableListOf(4, 0, 0, 3, 4, 4, 0, 0, 3, 4, 4, 0, 0, 3, 4, 4, 0, 0, 3, 4, 4, 0, 0, 3, 4, 4, 0, 0, 3, 4, 4, 0, 0, 3, 4, 4, 0, 0, 3, 4, 4, 0, 0, 3, 4, 4, 0, 0, 3, 4, 4, 0, 0, 3, 4, 4, 0, 0, 3, 4, 4, 0, 0, 3), priority = 2, id = 101)
+    var train3 = Train(schedule = mutableListOf(1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4), priority = 3, id = 102)
+    var train4 = Train(schedule = mutableListOf(5, 4, 3, 2, 1, 5, 4, 3, 2, 1, 5, 4, 3, 2, 1, 5, 4, 3, 2, 1, 5, 4, 3, 2, 1, 5, 4, 3, 2, 1, 5, 4, 3, 2, 1, 5, 4, 3, 2, 1, 5, 4, 3, 2, 1, 5, 4, 3, 2, 1, 5, 4, 3, 2, 1, 5, 4, 3, 2, 1, 5, 4, 3, 2), priority = 1, id = 103)
+    var train5 = Train(schedule = mutableListOf(0, 0, 5, 5, 2, 0, 0, 5, 5, 2, 0, 0, 5, 5, 2, 0, 0, 5, 5, 2, 0, 0, 5, 5, 2, 0, 0, 5, 5, 2, 0, 0, 5, 5, 2, 0, 0, 5, 5, 2, 0, 0, 5, 5, 2, 0, 0, 5, 5, 2, 0, 0, 5, 5, 2, 0, 0, 5, 5, 2, 0, 0, 5, 5), priority = 2, id = 104)
+    var train6 = Train(schedule = mutableListOf(3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1), priority = 3, id = 105)
+    var train7 = Train(schedule = mutableListOf(2, 1, 1, 1, 3, 2, 1, 1, 1, 3, 2, 1, 1, 1, 3, 2, 1, 1, 1, 3, 2, 1, 1, 1, 3, 2, 1, 1, 1, 3, 2, 1, 1, 1, 3, 2, 1, 1, 1, 3, 2, 1, 1, 1, 3, 2, 1, 1, 1, 3, 2, 1, 1, 1, 3, 2, 1, 1, 1, 3, 2, 1, 1, 1), priority = 1, id = 106)
+    var train8 = Train(schedule = mutableListOf(1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0), priority = 2, id = 107)
+    var train9 = Train(schedule = mutableListOf(4, 3, 2, 5, 5, 4, 3, 2, 5, 5, 4, 3, 2, 5, 5, 4, 3, 2, 5, 5, 4, 3, 2, 5, 5, 4, 3, 2, 5, 5, 4, 3, 2, 5, 5, 4, 3, 2, 5, 5, 4, 3, 2, 5, 5, 4, 3, 2, 5, 5, 4, 3, 2, 5, 5, 4, 3, 2, 5, 5, 4, 3, 2, 5), priority = 3, id = 108)
+    var train10 = Train(schedule = mutableListOf(1, 5, 4, 4, 4, 1, 5, 4, 4, 4, 1, 5, 4, 4, 4, 1, 5, 4, 4, 4, 1, 5, 4, 4, 4, 1, 5, 4, 4, 4, 1, 5, 4, 4, 4, 1, 5, 4, 4, 4, 1, 5, 4, 4, 4, 1, 5, 4, 4, 4, 1, 5, 4, 4, 4, 1, 5, 4, 4, 4, 1, 5, 4, 4), priority = 1, id = 109)
+    var train11 = Train(schedule = mutableListOf(2, 0, 4, 3, 3, 2, 0, 4, 3, 3, 2, 0, 4, 3, 3, 2, 0, 4, 3, 3, 2, 0, 4, 3, 3, 2, 0, 4, 3, 3, 2, 0, 4, 3, 3, 2, 0, 4, 3, 3, 2, 0, 4, 3, 3, 2, 0, 4, 3, 3, 2, 0, 4, 3, 3, 2, 0, 4, 3, 3, 2, 0, 4, 3), priority = 2, id = 110)
+    var train12 = Train(schedule = mutableListOf(3, 0, 0, 0, 0, 3, 0, 0, 0, 0, 3, 0, 0, 0, 0, 3, 0, 0, 0, 0, 3, 0, 0, 0, 0, 3, 0, 0, 0, 0, 3, 0, 0, 0, 0, 3, 0, 0, 0, 0, 3, 0, 0, 0, 0, 3, 0, 0, 0, 0, 3, 0, 0, 0, 0, 3, 0, 0, 0, 0, 3, 0, 0, 0), priority = 3, id = 111)
     var trains = mutableListOf(train1, train2, train3, train4, train5, train6, train7, train8, train9, train10, train11, train12)
 
-    var network = Network(3, trains, 5,mutableListOf(2, 3, 3, 3, 3))
-    network.simulateOneStep()
-    writeResultstoConsole(trains, network)
+    var network = Network(3, trains, 64, mutableListOf(2, 3, 3, 3, 3))
+
+    network.runSimulation()
+
+    writeResultsToConsole(trains, network)
+
 }
 
 
@@ -38,7 +41,7 @@ fun external() {
     var trains: MutableList<Train> = parseScheduleCSV()
     var segments: MutableList<Int> = parseSegmentsCSV()
     var network = Network(3, trains, trains[0].getScheduleLength(), segments)
-    network.simulateOneStep()
+    network.runSimulation()
     saveResultsToCSV(trains, network = network)
 
 }
@@ -56,18 +59,20 @@ fun parseScheduleCSV(): MutableList<Train> {
 
     for (record in allRows) {
 
+        val segmentChoiceStr: String = record.values[1]
+        val segmentChoiceArray: List<String> = segmentChoiceStr.split(";")
 
-        var segmentsChoiceStr: String = record.values[1]
-        var segmentsChoiceArray: List<String> = segmentsChoiceStr.split(";")
+        val priority: Int = record.values[2].toInt()
+        val id: Int = record.values[0].toInt()
 
-        var segmentsChoiceList: MutableList<Int> = mutableListOf()
+        val segmentChoiceList: MutableList<Int> = mutableListOf()
 
-        for (segment in segmentsChoiceArray) {
+        for (segment in segmentChoiceArray) {
             val segmentInt: Int = segment.toInt()
-            segmentsChoiceList.add(segmentInt)
+            segmentChoiceList.add(segmentInt)
         }
 
-        trainsCSV.add(Train(schedule = segmentsChoiceList))
+        trainsCSV.add(Train(schedule = segmentChoiceList, priority = priority, id = id))
 
     }
     return trainsCSV
@@ -97,27 +102,22 @@ fun parseSegmentsCSV(): MutableList<Int> {
 }
 
 fun saveResultsToCSV(results: List<Train>, outputFile: String = "results.csv", network: Network) {
+
+
     val writer = FileHandler().getWriter(outputFile)
+
     val csvWriter = CsvWriter(writer, CsvWriterSettings())
 
 
     // Write the record headers of this file
     val trainRows: MutableList<Array<Any>> = mutableListOf()
-    var i: Int = 0
-    var row: Array<Any> = arrayOf("train number", "delayed/on time")
+    var row: Array<Any> = arrayOf("Train number", "schedule history")
     trainRows.add(row)
-
     for (result in results) {
-
-        i++
-
-        if (result.getDelayed()) {
-            row = arrayOf(i.toString(), "delayed")
-        } else {
-            row = arrayOf(i.toString(), "ontime")
-        }
+        row = arrayOf(result.id.toString(), result.getScheduleDriven().joinToString(", ").replace("-1", "delayed"))
         trainRows.add(row)
     }
+
     csvWriter.writeRowsAndClose(trainRows)
 
     // segment capacities:
@@ -144,24 +144,14 @@ fun saveResultsToCSV(results: List<Train>, outputFile: String = "results.csv", n
     segmentCsvWriter.writeRowsAndClose(segmentRows)
 }
 
-fun writeResultstoConsole(results: List<Train>, network: Network) {
-
-    var i: Int = 0
+fun writeResultsToConsole(results: List<Train>, network: Network) {
 
     for (result in results) {
-
-        i++
-
-        if (result.getDelayed()) {
-            println(i.toString() + " - delayed")
-        } else {
-            println(i.toString() + " - ontime")
-        }
-
+        println("Train #" + result.id + " drove the following schedule: " + result.getScheduleDriven().joinToString(", ").replace("-1", "delayed"))
     }
+
     var segmentCapacities = network.getSegmentsCapacityTracking()
     var x: Int = 1
-
     for(capacities in segmentCapacities) {
         var resultString = "Segment #" + x.toString() + " remaining capacities: "
         for (capacity in capacities) {
@@ -170,6 +160,5 @@ fun writeResultstoConsole(results: List<Train>, network: Network) {
         println(resultString)
         x++
     }
-
 }
 
