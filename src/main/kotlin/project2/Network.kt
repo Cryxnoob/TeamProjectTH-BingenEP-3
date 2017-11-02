@@ -47,8 +47,16 @@ class Network(val capacity:Int,val trains:List<Train>, val schedulelength:Int, v
                 diff = segment.getcurrentcount()-segment.capacity
                 x = diff
                 while (x > 0 ){
-                    delayedtrains.add(Random().nextInt(segment.getcurrentcount()))
+                    var differentTrain:Boolean = false
+                    while (!differentTrain){
+                        val newValue = Random().nextInt(segment.getcurrentcount())
+                        if(newValue !in delayedtrains){
+                            delayedtrains.add(newValue)
+                            differentTrain = true
+                        }
+                    }
                     x--
+
                 }
                 y = 0
 
